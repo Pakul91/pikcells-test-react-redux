@@ -1,56 +1,61 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import { Layer } from "./components/Layer/Layer";
+
+import "./App.css";
+import { loadData, selectLayers } from "./data/dataSlice";
+
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 function App() {
+  const dispatch = useDispatch();
+  const layers = useSelector(selectLayers);
+
+  useEffect(() => {
+    dispatch(loadData());
+  }, [dispatch]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
+      <header>
+        <h1>Welcome to our quick design app!</h1>
+        <h2>
+          Our quick design app allows you to check some of the projects that our
+          top designers prepared for you! You may find something you like, or it
+          may inspire you to create your own custom made project of your dream
+          kitchen!
+        </h2>
       </header>
+      <main>
+        <h2>Take your kitchen desing into your own hands!</h2>
+        <p>
+          Each layer represents a different aspect of your kitchen. Play around
+          with the options presented to you to see what incredible design you
+          can create on your own!
+        </p>
+        <section className="design-selection-container">
+          {layers &&
+            layers.map((layer) => <Layer key={layer.order} layer={layer} />)}
+        </section>
+
+        <section className="desigin-display-container"></section>
+
+        <section className="hidden-canvas">
+          <canvas width="1140" height="760" hidden={true}></canvas>
+        </section>
+
+        <section className="buttons-container">
+          <div className="button-container">
+            <h3>Not inspired yet?</h3>
+            <p className="btn new-items-btn">Load new designs!</p>
+          </div>
+          <div className="button-container">
+            <h3>Satysfied?</h3>
+            <p className="btn save-design-btn">Save your design!</p>
+          </div>
+        </section>
+      </main>
     </div>
   );
 }
