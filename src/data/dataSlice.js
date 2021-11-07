@@ -61,6 +61,6 @@ export const dataSlice = createSlice({
 
 export const { setItemToActive } = dataSlice.actions;
 
-export const selectLayers = (state) => state.data.data.layers;
+export const selectItemLayers = (state) => state.data.data.layers;
 
 export default dataSlice.reducer;

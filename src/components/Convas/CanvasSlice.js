@@ -20,4 +20,6 @@ export const canvasSlice = createSlice({
 
 export const { updateCanvasLayer } = canvasSlice.actions;
 
+export const selectCanvasLayers = (state) => state.canvas;
+
 export default canvasSlice.reducer;

@@ -1,7 +1,14 @@
 import React from "react";
 
-export function Image() {
+export function Image({ canvasLayer }) {
   return (
-    <img className="img img-layer0" crossOrigin="anonymous" src="//:0" alt="" />
+    <div className="img-container">
+      <img
+        className="img img-layer0"
+        crossOrigin="anonymous"
+        src={canvasLayer}
+        alt="canvas layer"
+      />
+    </div>
   );
 }

@@ -1,3 +1,17 @@
+/* 1) GLOBAL STYLES */
+/* 2) HEADER STYLES */
+/* 3) LAYERS STYLES */
+/* 4) DESIGN STYLES */
+/* 5) BUTTONS CONTAINER STYLES */
+
+/* 1) GLOBAL STYLES */
+
+:root {
+  --backgroud-main: #6e6eb6;
+
+  --backgroud-active: lightyellow;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -15,6 +29,7 @@ h3 {
   margin: 1rem;
 }
 
+/* 2) HEADER STYLES */
 header {
   padding: 1rem;
   background: var(--backgroud-main);
@@ -36,4 +51,81 @@ header {
   width: 20%;
   margin: 1rem 2%;
   white-space: nowrap;
+}
+
+.btn {
+  padding: 0.25rem 0rem;
+  margin-bottom: 0.5rem;
+  background: var(--backgroud-main);
+  border-radius: 2px;
+  box-shadow: 5px 5px 5px;
+  cursor: pointer;
+  transition: transform 250ms ease-out;
+  border: none;
+}
+
+.item {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.btn:hover {
+  z-index: 2;
+  transform: scale(1.05);
+}
+
+.active {
+  background: var(--backgroud-active);
+  font-weight: 1000;
+}
+
+/* 4) DESIGN STYLES */
+
+.desigin-display-container {
+  width: 100%;
+  height: 70vh;
+  position: relative;
+}
+.img-container {
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+}
+img {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+/* 5) BUTTONS CONTAINER STYLES */
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+.button-container {
+  width: 25%;
+}
+.new-items-btn,
+.save-design-btn {
+  margin: 0 auto;
+  width: 10rem;
+  font-weight: 900;
+}
+@media screen and (max-width: 1100px) {
+  html {
+    font-size: 14px;
+  }
+
+  .layer-container {
+    width: 30%;
+    margin: 1rem 1%;
+    white-space: normal;
+  }
+
+  .button-container {
+    width: 40%;
+  }
 }

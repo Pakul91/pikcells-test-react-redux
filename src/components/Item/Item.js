@@ -1,5 +1,5 @@
 import React from "react";
-import "./Item.css";
+
 import { updateCanvasLayer } from "../Convas/CanvasSlice";
 import { handleItemCLick } from "../../data/dataSlice";
 

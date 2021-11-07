@@ -1,20 +1,21 @@
 import React from "react";
 import logo from "./logo.svg";
 import { Layer } from "./components/Layer/Layer";
+import { Canvas } from "./components/Convas/Canvas";
 
 import "./App.css";
-import { loadData, selectLayers } from "./data/dataSlice";
+import { loadData, selectItemLayers } from "./data/dataSlice";
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 function App() {
   const dispatch = useDispatch();
-  const layers = useSelector(selectLayers);
+  const itemLayers = useSelector(selectItemLayers);
 
   useEffect(() => {
     dispatch(loadData());
-  }, [dispatch]);
+  }, []);
 
   return (
     <div className="App">
@@ -34,16 +35,15 @@ function App() {
           with the options presented to you to see what incredible design you
           can create on your own!
         </p>
+
         <section className="design-selection-container">
-          {layers &&
-            layers.map((layer) => <Layer key={layer.order} layer={layer} />)}
+          {itemLayers &&
+            itemLayers.map((layer) => (
+              <Layer key={layer.order} layer={layer} />
+            ))}
         </section>
 
-        <section className="desigin-display-container"></section>
-
-        <section className="hidden-canvas">
-          <canvas width="1140" height="760" hidden={true}></canvas>
-        </section>
+        <Canvas />
 
         <section className="buttons-container">
           <div className="button-container">
