@@ -16,14 +16,14 @@ export const Item = (props) => {
   const imgSrc = `https://lab.pikcells.com/code-exercise/images/${item.imgSrc}`;
 
   const handleClick = () => {
-    dispatch(handleItemCLick(layer, imgSrc, index));
+    if (!active) dispatch(handleItemCLick(layer, imgSrc, index));
   };
 
   useEffect(() => {
     if (active) {
       dispatch(updateCanvasLayer({ layer, imgSrc }));
     }
-  }, []);
+  }, [active, dispatch, imgSrc, layer]);
 
   return (
     <p

@@ -42,3 +42,39 @@ export function sortData(input) {
 function assignStatusToItem(item, i, indexOfActive) {
   item.active = i === indexOfActive ? true : false;
 }
+
+/**
+ * download canvas to user desktop
+ * I've used method from this youtube clip
+ * https://www.youtube.com/watch?v=YoVJWZrS2WU
+ */
+export function downloadCanvas(canvas) {
+  console.log(canvas);
+  // IE/Edge Support (PNG only)
+  if (window.navigator.msSaveBlob) {
+    window.navigator.msSaveBlob(canvas.msToBlob(), "design.png");
+  } else {
+    // rest of the browsers
+    const a = document.createElement("a");
+
+    document.body.appendChild(a);
+    a.href = canvas.toDataURL();
+    a.download = "design.png";
+    a.click();
+    document.body.removeChild(a);
+  }
+}
+
+/**
+ * draw canvas from the active items
+ */
+export function drawCanvas(canvasRef, layer0, layer1, layer2) {
+  const width = canvasRef.current.clientWidth;
+  const height = canvasRef.current.clientHeight;
+  const ctx = canvasRef.current.getContext("2d");
+  ctx.clearRect(0, 0, width, height);
+
+  ctx.drawImage(layer0.current, 0, 0, width, height);
+  ctx.drawImage(layer1.current, 0, 0, width, height);
+  ctx.drawImage(layer2.current, 0, 0, width, height);
+}
