@@ -14,7 +14,10 @@ const initialState = {
   isLoading: false,
   error: false,
   errorMessage: "",
-  data: {},
+  data: {
+    layers: [],
+    default_configuration: [],
+  },
 };
 
 // load data from API
@@ -62,5 +65,7 @@ export const dataSlice = createSlice({
 export const { setItemToActive } = dataSlice.actions;
 
 export const selectItemLayers = (state) => state.data.data.layers;
+export const selectError = (state) => state.data.error;
+export const selectErrorMessage = (state) => state.data.errorMessage;
 
 export default dataSlice.reducer;

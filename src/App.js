@@ -2,9 +2,15 @@ import React from "react";
 
 import { Layer } from "./components/Layer/Layer";
 import { Canvas } from "./components/Convas/Canvas";
+import { Error } from "./components/Error/Error";
 
 import "./App.css";
-import { loadData, selectItemLayers } from "./data/dataSlice";
+import {
+  loadData,
+  selectItemLayers,
+  selectError,
+  selectErrorMessage,
+} from "./data/dataSlice";
 import { changeDrawCanvasState } from "./components/Convas/CanvasSlice";
 
 import { useEffect } from "react";
@@ -12,7 +18,10 @@ import { useDispatch, useSelector } from "react-redux";
 
 function App() {
   const dispatch = useDispatch();
+
   const itemLayers = useSelector(selectItemLayers);
+  const error = useSelector(selectError);
+  const errorMessage = useSelector(selectErrorMessage);
 
   function handleSaveImgCLick() {
     dispatch(changeDrawCanvasState(true));
@@ -60,16 +69,20 @@ function App() {
             what incredible design you can create on your own!
           </p>
         </div>
+        {/* error message */}
+        {error && <Error error={errorMessage} />}
 
         {/* Layers with items */}
         <section id="design" className="design-selection-container">
-          {itemLayers &&
+          {!error &&
+            itemLayers &&
             itemLayers.map((layer) => (
               <Layer key={layer.order} layer={layer} />
             ))}
         </section>
+
         {/* Canvas with preview images */}
-        <Canvas />
+        {!error && <Canvas />}
 
         <section className="buttons-container">
           <div className="button-container">

@@ -190,6 +190,12 @@ img {
   font-weight: 700;
 }
 
+.error {
+  font-size: 2rem;
+  color: red;
+  padding-bottom: 4rem;
+}
+
 /* 6) FOOTER STYLES */
 
 footer {
