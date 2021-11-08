@@ -218,3 +218,17 @@ footer {
     width: 40%;
   }
 }
+
+@media screen and (max-width: 430px) {
+  html {
+    font-size: 12px;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .button-container {
+    width: 50%;
+  }
+}
