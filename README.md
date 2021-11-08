@@ -1,3 +1,23 @@
+## Table of contents
+
+- [General info](#general-info)
+- [Technologies](#technologies)
+- [Setup](#setup)
+
+## General info
+
+App allows users to create kitchen design from pre-loaded template layers and save it as an image to their desktop
+
+## Technologies
+
+- JavaScript
+- React 17.02
+- Html 5
+- CSS 3
+- Pikcells JSON API
+
+## Setup
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
 ## Available Scripts
